@@ -6,7 +6,7 @@ let sortDirection = 'asc'
 // Get the cards container
 const eventContainer = document.querySelector('.event-container')
 
-function createEventCard({ id, name, description, image, date, price }) {
+function createEventCard({ id, name, description, image, date, price, registered }) {
     const eventArticleElement = document.createElement('article')
     eventArticleElement.classList.add('event')
     eventArticleElement.id = `event-${id}`
@@ -29,7 +29,7 @@ function createEventCard({ id, name, description, image, date, price }) {
     const eventPriceElement = document.createElement('p')
     eventArticleElement.append(eventPriceElement)
     eventPriceElement.classList.add('ev-price')
-    eventPriceElement.innerText = `£${(price / 100).toFixed(2)}`
+    eventPriceElement.innerText = price ? `£${(price / 100).toFixed(2)}` : 'Free'
 
     const eventTimeElement = document.createElement('time')
     eventArticleElement.append(eventTimeElement)
@@ -38,9 +38,32 @@ function createEventCard({ id, name, description, image, date, price }) {
     eventTimeElement.innerText = new Date(date).toLocaleString()
 
     const eventButtonElement = document.createElement('button')
-    eventArticleElement.append(eventButtonElement)
+    const eventButtonContainer = document.createElement('div')
+    eventButtonContainer.classList.add('ev-button-container')
+    eventButtonContainer.append(eventButtonElement)
+    eventArticleElement.append(eventButtonContainer)
     eventButtonElement.classList.add('ev-button')
+
     eventButtonElement.innerText = 'Register'
+    if (registered) {
+        eventButtonElement.classList.add('registered')
+        eventButtonElement.innerText = 'Cancel'
+    }
+
+
+    eventButtonElement.addEventListener('click', (e) => {
+        const event = events.find(ev => ev.id == id)
+
+        event.registered = !event.registered
+
+        if (event.registered) {
+            eventButtonElement.classList.add('registered')
+            eventButtonElement.innerText = 'Cancel'
+        }else {
+            eventButtonElement.classList.remove('registered')
+            eventButtonElement.innerText = 'Register'
+        }
+    })
 
     eventContainer.append(eventArticleElement)
 
@@ -82,6 +105,9 @@ function sortEvents(key, asc = true) {
     removeAllCards()
     eventsDisplayed = sorted;
     eventsDisplayed.forEach(event => createEventCard(event))
+
+    document.querySelector('#event-count').innerHTML = eventsDisplayed.length
+    document.querySelector('#event-count-total').innerHTML = events.length
     return sorted
 }
 
@@ -123,6 +149,7 @@ function setup() {
     // Setup buttons and stuff
 
     const sortSelect = document.querySelector('#sort-select')
+    sortSelect.selectedIndex = 0
     sortSelect.addEventListener('input', (e) => {
         const selectedSortOption = e.target.options[e.target.selectedIndex].value
 
@@ -135,9 +162,22 @@ function setup() {
     })
 
     const searchInput = document.querySelector('#search-bar')
+    searchInput.value = ''
     searchInput.addEventListener('input', (e) => {
         console.log(e.target.value)
         console.log(fullTextSearch(e.target.value))
+        sortEvents(sortKey, sortDirection)
+    })
+
+    const resetButton = document.querySelector('#button-reset')
+
+    resetButton.addEventListener('click', (e) => {
+        sortSelect.selectedIndex = 0
+        searchInput.value = ''
+
+        sortKey = 'random'
+        sortDirection = 'asc'
+        fullTextSearch('')
         sortEvents(sortKey, sortDirection)
     })
 }

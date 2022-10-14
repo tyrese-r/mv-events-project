@@ -11,8 +11,9 @@
 </head>
 <body>
     <nav>
-        <h1>Events</h1>
+        
         <section class="nav-bar">
+            <div class="nav-title"><h1><span id="event-count">n</span> Events</h1></div>
             <div class="nav-search">
                 <label for="search-bar">Search</label>
                 <input id="search-bar" class="search-bar" id="search-bar">
@@ -23,14 +24,15 @@
                     <option selected value="random-asc">Random</option>
                     <option value="name-asc">Name (a-z)</option>
                     <option value="name-desc">Name (z-a)</option>
-                    <option value="date-asc">Date (newest)</option>
-                    <option value="date-desc">Date (oldest)</option>
+                    <option value="date-asc">Date (oldest)</option>
+                    <option value="date-desc">Date (newest)</option>
                     <option value="price-asc">Price (low)</option>
                     <option value="price-desc">Price (high)</option>
                     <option value="description-asc">Description (a-z)</option>
                     <option value="description-desc">Description (z-a)</option>
                 </select>
             </div>
+            <div class="nav-reset"><button id="button-reset">Reset Filters</button></div>
             
         </section>
     </nav>
@@ -43,12 +45,13 @@
                 <h3 class="ev-name" >The first one</h3>
                 <p class="ev-price">£10.00</p>
                 <time class="ev-time" datetime="2022-01-01" title="In a few months">Foo</time>
-                <button class="ev-button">Register</button>
+                <div class="ev-button-container"><button class="ev-button">Register</button></div>
+                
             </article> -->
        
         </section>
     </main>
 
-    <footer>This is the footer</footer>
+    <footer>This page contains a total of <span id="event-count-total"></span>. You can use the search box to search in the title or description. You can also sort events by specific fields. You can also register for events.</footer>
 </body>
 </html>

@@ -9,29 +9,54 @@ body {
     grid-template-rows: 100px repeat(4, 1fr) 100px;
     margin: 0;
 }
+@media (min-width: 1025px) {
+    /* CSS for desktops */
+}
+
+@media (max-width: 670px) {
+    /* CSS for tablets */
+    body {
+        grid-template-rows: 200px repeat(4, 1fr) 100px;
+    }
+}
 
 main {
     grid-area: 2 / 1 / 6 / 7;
-    background-color: aquamarine;
+    background-color: #a8e0ff;
 }
 
 footer {
     grid-area: 6 / 1 / 7 / 7;
-    background-color: green;
+    background-color: #70CAD1;
 }
 
 nav {
     grid-area: 1 / 1 / 2 / 7;
-    background-color: green;
+    background-color: #70CAD1;
+    /* margin: auto; */
 }
 .nav-bar {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 50px;
+    gap: 20px;
     justify-content: center;
+    margin: auto;
+    padding: 10px;
+    
 }
 
+.nav-search {
+    margin: auto;
+}
+
+.nav-sort {
+    margin:auto;
+}
+
+.nav-reset {
+    margin: auto;
+}
 .event-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, 250px);
@@ -40,9 +65,12 @@ nav {
     justify-content: center;
     /* justify-items: center; */
     padding: 30px;
+
+    min-height: calc(100vh - 200px);
 }
 .event {
-    background-color: bisque;
+    background-color: #70CAD1;
+    color: black;
     width: 100%;
     min-height: 460px;
     height: 100%;
@@ -52,25 +80,53 @@ nav {
     border-radius: 20px;
 }
 
-button {
-    margin: 10px;
+.nav-reset > button {
     margin-top: auto;
+    margin-bottom: auto;
+    background: none;
+    border: none;
 }
 
-.ev-price {
-    margin-top: auto;
-}
-.ev-time {
-    margin-top: auto;
-}
 .ev-name{
     margin: 0px;
+    margin-left: 4px;
     margin-top: 4px;
     font-size: 1.25rem;
 }
 .ev-description {
     margin: 1px;
+    margin-left: 4px;
     font-size: 11px
+}
+
+.ev-price {
+    margin-left: 4px;
+}
+
+.ev-time {
+    margin-left: 4px;
+}
+
+.ev-button-container {
+    display: flex;
+
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: 10px;
+
+    width: 100%
+}
+
+.ev-button {
+    width: 80px;
+    background-color: #3E517A;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.registered {
+    background-color: #b08ea2;
 }
 
 .ev-image {

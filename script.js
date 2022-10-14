@@ -59,7 +59,7 @@ function createEventCard({ id, name, description, image, date, price, registered
         if (event.registered) {
             eventButtonElement.classList.add('registered')
             eventButtonElement.innerText = 'Cancel'
-        }else {
+        } else {
             eventButtonElement.classList.remove('registered')
             eventButtonElement.innerText = 'Register'
         }
@@ -75,12 +75,20 @@ function removeEventCard({ id }) {
     eventCard.remove()
 }
 
+
+/**
+ * Sort events
+ * @param {string} key The key to sort it by
+ * @param {boolean} asc Boolean value whether sorting it ascending or descending
+ * @returns The sorted event array
+ */
 function sortEvents(key, asc = true) {
     const multiplier = asc ? 1 : -1
 
     // Copy events array
     let eventsCopy = [...eventsDisplayed]
 
+    // If it's random then set a field to a random number then sort by that number
     if (key == 'random') {
         for (let i = 0; i < eventsCopy.length; i++) {
             const event = eventsCopy[i];
@@ -88,7 +96,8 @@ function sortEvents(key, asc = true) {
         }
     }
     const sorted = eventsCopy.sort((a, b) => {
-        // Convert to uppercase if string
+
+        // Convert to uppercase if it's a string
         let aValue = typeof a[key] === 'string' ? a[key].toUpperCase() : a[key]
         let bValue = typeof b[key] === 'string' ? b[key].toUpperCase() : b[key]
 
@@ -114,12 +123,11 @@ function sortEvents(key, asc = true) {
 function fullTextSearch(query) {
     // Ignore character case
     // Ignore special characters
-    //
     // Search in name or description
     query = query.toUpperCase()
 
     // Replace non alpha numeric characters with nothing
-
+    query = query.replace(/[^A-Za-z0-9]+/, '')
     const searched = events.filter(event => {
         if (new RegExp(`${query}`).test(event.name.toUpperCase())) {
             return true

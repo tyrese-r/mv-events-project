@@ -174,9 +174,11 @@ const placeholder = {
     ],
 
     generateName() {
+        // Gets random name from list
         return this.names[Math.floor(Math.random() * this.names.length)]
     },
     generateDescription() {
+        // Get random name from list
         return this.descriptions[Math.floor(Math.random() * this.descriptions.length)]
     },
     generateImage() {
@@ -184,16 +186,16 @@ const placeholder = {
     },
     generatePrice() {
         // 20% chance of it being free
-        if (Math.random() < 0.2) {
+        if (Math.random() <= 0.2) {
             return 0
         }
 
-        // Random price up to 30
+        // Random price up to £30
         return Math.round(Math.random() * 3000)
     },
     generateDate() {
-        const min = 1665754388000
-        const max = 1671028388000
+        const min = 1665754388000 // Fri Oct 14 2022 13:33:08
+        const max = 1671028388000 // Wed Dec 14 2022 14:33:08
 
         
         // Get random number between two dates

@@ -1,3 +1,9 @@
+View the page: https://tyrese-r.github.io/mv-events-project
+
+<br>
+
+---
+
 # Task
 **Build a page that displays events**
 
@@ -15,7 +21,7 @@
 
     - Price
 
-- Display 10 events
+- Display 10 evenets
 
 - Page should have title and description
 
@@ -39,14 +45,3 @@ Use your search bar to search events by other text fields, for example by their 
 
 ---
 # Plan
-
-
-- Filter budget
-- Filter day/time availible
-- Filter with text
-
-- Show and tell at 16:00
-- 2 - 3 minutes
-- Show site
-- Show code
-- Focus on something that I thought was good

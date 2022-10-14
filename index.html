@@ -5,15 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="events.js" defer></script>
     <script src="script.js" defer></script>
     <title>Events page</title>
 </head>
 <body>
     <nav>
-        <h1>Hello World!</h1>
+        <h1>Events</h1>
+        <section class="nav-bar">
+            <div class="nav-search">
+                <label for="search-bar">Search</label>
+                <input id="search-bar" class="search-bar" id="search-bar">
+            </div>
+            <div class="nav-sort">
+                <label for="sort-select">Sort by</label>
+                <select name="sort-select" id="sort-select">
+                    <option selected value="random-asc">Random</option>
+                    <option value="name-asc">Name (a-z)</option>
+                    <option value="name-desc">Name (z-a)</option>
+                    <option value="date-asc">Date (newest)</option>
+                    <option value="date-desc">Date (oldest)</option>
+                    <option value="price-asc">Price (low)</option>
+                    <option value="price-desc">Price (high)</option>
+                    <option value="description-asc">Description (a-z)</option>
+                    <option value="description-desc">Description (z-a)</option>
+                </select>
+            </div>
+            
+        </section>
     </nav>
-    <main></main>
-    <aside></aside>
-    <footer></footer>
+    <main>
+        <section class="event-container">
+            <!-- An example event card -->
+            
+            <!-- <article class="event" id="event-id">
+                <img class="ev-image" src="assets/cinema.jpg">
+                <h3 class="ev-name" >The first one</h3>
+                <p class="ev-price">£10.00</p>
+                <time class="ev-time" datetime="2022-01-01" title="In a few months">Foo</time>
+                <button class="ev-button">Register</button>
+            </article> -->
+       
+        </section>
+    </main>
+
+    <footer>This is the footer</footer>
 </body>
 </html>
